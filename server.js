@@ -1,4 +1,5 @@
 console.log("Web Serverni Boshlash");
+const { log } = require("console");
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -15,11 +16,13 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 //4 Routing codes
-app.get("/hello", function (req, res) {
-    res.end(`<h1>Hello World by JOHN</ h1>`);
+app.post("/create-item", (req, res) => {
+    console.log(req.body);
+    res.json({ test: "success" });
 });
-app.get("/gift", function (req, res) {
-    res.end(`<h1>siz sovga pagedasz</ h1>`);
+
+app.get("/", function (req, res) {
+    res.render("harid");
 });
 
 const server = http.createServer(app);
