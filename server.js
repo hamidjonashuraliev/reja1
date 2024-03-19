@@ -1,5 +1,4 @@
 console.log("Web Serverni Boshlash");
-const { log } = require("console");
 const express = require("express");
 const app = express();
 const http = require("http");
@@ -22,11 +21,12 @@ app.post("/create-item", (req, res) => {
 });
 
 app.get("/", function (req, res) {
-    res.render("harid");
+    res.render("store");
 });
 
 const server = http.createServer(app);
 let PORT = 3000;
 server.listen(PORT, function () {
-    console.log(`The server is running successfully on port: ${PORT}`);
+    console.log(`The server is running successfully on port: ${PORT}, http://localhost:${PORT}`);
 });
+
