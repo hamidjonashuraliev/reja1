@@ -22,12 +22,8 @@ app.post("/create-item", (req, res) => {
     console.log("user entered  /create-item ");
     const new_store = req.body.store;
     db.collection("plans").insertOne({ store: new_store }, (err, data) => {
-        if (err) {
-            console.log(err);
-            res.end("something went wrong");
-        } else {
-            res.end("successfully added");
-        }
+      console.log(data.ops);
+        res.json(data.ops[0]);
     });
 });
 
