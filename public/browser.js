@@ -37,3 +37,32 @@ createField.focus();
     console.log("Iltimos qaytadan harakat qiling!");
 }); 
 });
+
+document.addEventListener("click", function (e) {
+    //    //delete oper-n
+    console.log(e.target);
+    if (e.target.classList.contains("delete-me")) {
+        // alert("siz bosdiz");
+
+        if (confirm("Aniq o'chirmoqchimisiz?")) {
+            // alert("yes ha deb ");
+            axios
+                .post("/delete-item", { id: e.target.getAttribute("data-id") })
+
+                .then((respose) => {
+                    console.log(respose.data);
+                    e.target.parentElement.parentElement.remove();
+                })
+                .catch((err) => {
+                    console.log("Iltimos qaytadan harakat qiling!");
+                });
+        }
+        //  else {
+        //   alert("no deyildi");
+    }
+    // }
+    //     //edit oper-n
+    if (e.target.classList.contains("edit-me")) {
+        alert("siz edit tugmasini bosdingiz");
+    }
+});
